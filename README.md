@@ -43,20 +43,44 @@ void displayRGBLED() {
   digitalWrite(greenLED, LOW);
   digitalWrite(blueLED, LOW);
 
-  // buttons start low, when pressed led high
-  if (redState == LOW) {
+  // when multiple buttons are pressed, different colors
+  if (redState == LOW && blueState == LOW && greenState == LOW)
+  {
     digitalWrite(redLED, HIGH);
-    Serial.println("Red ON");
-  }
-  if (greenState == LOW) {
-    digitalWrite(greenLED, HIGH);
-    Serial.println("Green ON");
-  }
-  if (blueState == LOW) {
     digitalWrite(blueLED, HIGH);
-    Serial.println("Blue ON");
+    digitalWrite(greenLED, HIGH);
   }
-  // when multiple buttons are pressed, different colors 
+  // purple
+  else if(redState == LOW && blueState == LOW)
+  {
+    digitalWrite(redLED, HIGH);
+    digitalWrite(blueLED, HIGH);
+    Serial.print("Purple ON");
 
- 
+  }
+    
+  else
+  {
+
+    // buttons start low, when pressed led high
+      if (redState == LOW) 
+      {
+        digitalWrite(redLED, HIGH);
+        Serial.println("Red ON");
+      }
+      if (greenState == LOW) 
+      {
+        digitalWrite(greenLED, HIGH);
+        Serial.println("Green ON");
+      }
+      if (blueState == LOW) 
+      {
+        digitalWrite(blueLED, HIGH);
+        Serial.println("Blue ON");
+      }
+
+  }
+
+  
+  
 }
